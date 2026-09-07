@@ -1,6 +1,6 @@
 // MoneyTrack frontend. Create a Supabase project, run supabase.sql, then put your keys below.
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://zoyispolibzwxviobuhy.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_xbNvIB3SugzLiaXDXv3Jqg_LvjfBUIN";
 
 const categories = ["Food","Transport","Bills","Shopping","Education","Health","Entertainment","Salary","Allowance","Other"];
 let supabaseClient = null, currentUser = null, transactions = [], currentType = "income", authMode = "login";
