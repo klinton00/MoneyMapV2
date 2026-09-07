@@ -2,7 +2,7 @@
 const SUPABASE_URL = "https://zoyispolibzwxviobuhy.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_xbNvIB3SugzLiaXDXv3Jqg_LvjfBUIN";
 
-const categories = ["Food","Transport","Bills","Shopping","Education","Health","Entertainment","Salary","Allowance","Other"];
+const categories = ["Other""Food","Transport","Bills","Shopping","Education","Health","Entertainment","Salary","Allowance",];
 let supabaseClient = null, currentUser = null, transactions = [], currentType = "income", authMode = "login";
 
 const $ = id => document.getElementById(id);
