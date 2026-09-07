@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoneyTrack — Personal Money Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <section id="authView" class="auth-shell">
+    <div class="auth-card">
+      <div class="brand-mark">₱</div>
+      <h1>MoneyTrack</h1>
+      <p class="muted">Track your money anywhere, automatically.</p>
+
+      <div class="tabs">
+        <button class="tab active" data-auth-tab="login">Log in</button>
+        <button class="tab" data-auth-tab="signup">Create account</button>
+      </div>
+
+      <form id="authForm">
+        <label>Email<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="••••••••"></label>
+        <button id="authSubmit" class="primary full" type="submit">Log in</button>
+      </form>
+      <p id="authMessage" class="message"></p>
+    </div>
+  </section>
+
+  <section id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand"><span>₱</span><strong>MoneyTrack</strong></div>
+      <nav>
+        <button class="nav-btn active" data-section="dashboard">▦ <span>Dashboard</span></button>
+        <button class="nav-btn" data-section="transactions">↕ <span>Transactions</span></button>
+        <button class="nav-btn" data-section="analytics">◔ <span>Analytics</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="themeBtn" class="nav-btn">☾ <span>Toggle theme</span></button>
+        <button id="logoutBtn" class="nav-btn danger">↪ <span>Log out</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PERSONAL FINANCE</p>
+          <h2 id="greeting">Good morning</h2>
+        </div>
+        <div class="profile"><span id="userEmail"></span><div id="avatar" class="avatar">U</div></div>
+      </header>
+
+      <section id="dashboard" class="page">
+        <div class="hero-row">
+          <div>
+            <h3>Your money overview</h3>
+            <p class="muted">Every change is saved to your account automatically.</p>
+          </div>
+          <button id="addBtn" class="primary">＋ Add transaction</button>
+        </div>
+
+        <div class="cards">
+          <article class="balance-card">
+            <span>Total balance</span>
+            <strong id="balance">₱0.00</strong>
+            <small id="balanceHint">Across all transactions</small>
+          </article>
+          <article class="stat-card"><span>Income</span><strong id="income">₱0.00</strong><small>This month</small></article>
+          <article class="stat-card"><span>Expenses</span><strong id="expense">₱0.00</strong><small>This month</small></article>
+          <article class="stat-card"><span>Savings rate</span><strong id="savingsRate">0%</strong><small>Income − expenses</small></article>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel">
+            <div class="panel-head"><h4>Recent transactions</h4><button class="text-btn" data-section-link="transactions">View all →</button></div>
+            <div id="recentList" class="transaction-list empty">No transactions yet.</div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h4>Spending by category</h4><span class="muted">This month</span></div>
+            <div id="categoryList" class="category-list empty">No expenses this month.</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="transactions" class="page hidden">
+        <div class="hero-row">
+          <div><h3>Transactions</h3><p class="muted">Add money, remove money, and keep a complete history.</p></div>
+          <button class="primary" id="addBtn2">＋ Add transaction</button>
+        </div>
+        <div class="toolbar">
+          <input id="search" placeholder="Search transactions…">
+          <select id="typeFilter"><option value="all">All types</option><option value="income">Income</option><option value="expense">Expenses</option></select>
+          <select id="categoryFilter"><option value="all">All categories</option></select>
+          <button id="exportBtn" class="secondary">Export CSV</button>
+        </div>
+        <article class="panel">
+          <div id="transactionTable" class="table-wrap"></div>
+        </article>
+      </section>
+
+      <section id="analytics" class="page hidden">
+        <div class="hero-row"><div><h3>Analytics</h3><p class="muted">A simple look at your cash flow.</p></div></div>
+        <div class="grid-2">
+          <article class="panel"><h4>Monthly cash flow</h4><div id="flowBars" class="bars"></div></article>
+          <article class="panel"><h4>Category breakdown</h4><div id="analyticsCategories" class="category-list"></div></article>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <dialog id="transactionDialog">
+    <form id="transactionForm" method="dialog" class="modal">
+      <div class="modal-head"><div><h3>Add transaction</h3><p class="muted">Changes sync automatically.</p></div><button type="button" class="icon-btn" id="closeDialog">×</button></div>
+      <div class="type-toggle">
+        <button type="button" class="type-btn active" data-type="income">＋ Money in</button>
+        <button type="button" class="type-btn" data-type="expense">− Money out</button>
+      </div>
+      <label>Amount<input id="amount" type="number" min="0.01" step="0.01" required placeholder="0.00"></label>
+      <label>Description<input id="description" maxlength="80" required placeholder="e.g. Allowance, groceries"></label>
+      <label>Category<select id="category"></select></label>
+      <label>Date<input id="date" type="date" required></label>
+      <label>Notes <span class="muted">(optional)</span><textarea id="notes" rows="3" maxlength="300" placeholder="Optional note"></textarea></label>
+      <div class="modal-actions"><button type="button" class="secondary" id="cancelDialog">Cancel</button><button class="primary" type="submit">Save transaction</button></div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
