@@ -1,4 +1,4 @@
-:root{
+/* :root{
   --bg:#f5f7fb;--surface:#fff;--surface2:#f0f3f8;--text:#111827;--muted:#6b7280;
   --border:#e5e7eb;--primary:#111827;--primaryText:#fff;--green:#16803c;--red:#c0392b;
   --shadow:0 10px 30px rgba(17,24,39,.07);--radius:18px;
@@ -23,10 +23,10 @@ dialog{border:0;border-radius:20px;padding:0;background:var(--surface);color:var
 .toast{position:fixed;right:22px;bottom:22px;background:var(--primary);color:#fff;padding:12px 15px;border-radius:11px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:20;font-size:.85rem}.toast.show{opacity:1;transform:none}
 body.dark{--bg:#0d1117;--surface:#151a21;--surface2:#202731;--text:#f3f4f6;--muted:#9ca3af;--border:#2b3440;--primary:#f3f4f6;--primaryText:#111827;--shadow:0 10px 30px #0004}
 @media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.balance-card{grid-column:span 2}.grid-2{grid-template-columns:1fr}.sidebar{width:75px}.sidebar .brand strong,.nav-btn span{display:none}.nav-btn{justify-content:center}.main{padding:24px}.profile span{display:none}}
-@media(max-width:650px){.app-shell{display:block}.sidebar{position:fixed;bottom:0;left:0;right:0;width:auto;height:64px;z-index:10;border-right:0;border-top:1px solid var(--border);padding:5px 8px;flex-direction:row}.brand,.sidebar-bottom{display:none}.sidebar nav{display:flex;width:100%;justify-content:space-around}.nav-btn{justify-content:center}.nav-btn.danger{display:none}.main{padding:20px 15px 85px}.cards{grid-template-columns:1fr 1fr}.balance-card{grid-column:span 2}.hero-row{align-items:flex-start;flex-direction:column}.toolbar{flex-wrap:wrap}.toolbar input{max-width:none}.toolbar select{flex:1}.topbar{margin-bottom:25px}}
+@media(max-width:650px){.app-shell{display:block}.sidebar{position:fixed;bottom:0;left:0;right:0;width:auto;height:64px;z-index:10;border-right:0;border-top:1px solid var(--border);padding:5px 8px;flex-direction:row}.brand,.sidebar-bottom{display:none}.sidebar nav{display:flex;width:100%;justify-content:space-around}.nav-btn{justify-content:center}.nav-btn.danger{display:none}.main{padding:20px 15px 85px}.cards{grid-template-columns:1fr 1fr}.balance-card{grid-column:span 2}.hero-row{align-items:flex-start;flex-direction:column}.toolbar{flex-wrap:wrap}.toolbar input{max-width:none}.toolbar select{flex:1}.topbar{margin-bottom:25px}} */
 
 /* Dark mode balance card fix */
-body.dark .balance-card{
+/* body.dark .balance-card{
   background: var(--surface2);
   color: var(--text);
   border-color: var(--border);
@@ -34,4 +34,4 @@ body.dark .balance-card{
 body.dark .balance-card span,
 body.dark .balance-card small{
   color: var(--muted);
-}
+} */
